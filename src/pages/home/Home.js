@@ -24,7 +24,8 @@ function Home() {
       </div>
 
       <div className="home_body"></div>
-
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" 
+             alt="Google Logo"/>
     </div>
   );
 }

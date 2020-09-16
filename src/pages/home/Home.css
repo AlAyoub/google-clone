@@ -32,3 +32,8 @@
 .home_headerRight > .MuiSvgIcon-root {
     margin-right: 20px;
 }
+
+.home_body > img {
+    align-items: center;
+    max-width: 30px;
+}
