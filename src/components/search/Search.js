@@ -1,45 +1,64 @@
-import React, { useState } from 'react'
-import './Search.css'
+import React, { useState } from "react";
+import "./Search.css";
 import SearchIcon from "@material-ui/icons/Search";
 import MicIcon from "@material-ui/icons/Mic";
-import Button from '@material-ui/core/Button';
-import { useHistory } from 'react-router-dom';
+import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
+import { useStateValue } from "../../StateProvider";
+import { actionTypes } from "../../reducer";
 
 function Search({ hideButtons = false }) {
-    const [input, setInput] = useState("")
-    const history = useHistory();
+  const [{ }, dispatch] = useStateValue();
 
-    const search = e => {
-        e.preventDefault();
+  const [input, setInput] = useState("");
+  const history = useHistory();
 
-        console.log('you hit the search button', input)
+  const search = (e) => {
+    e.preventDefault();
 
-        // do something with the input...come back later and fix
-        history.push('./search')
-    }
+    console.log("you hit the search button", input);
 
-    return (
-        <form className='search'>
-            <div className='search_input'>
-                <SearchIcon className="search_inputIcon" />
-                <input value={input} onChange={e => setInput(e.target.value)} />
-                <MicIcon />
-            </div>
+    dispatch({
+      type: actionTypes.SET_SEARCH_TERM,
+      term: input,
+    });
 
-            {!hideButtons ? (
-                <div className="search_buttons">
-                    <Button type='submit' onClick={search} variant="outlined">Google Search</Button>
-                    <Button variant="outlined">I'm Feeling Lucky</Button>
-                </div>
-            ) : (
-                    <div className="search_buttons">
-                        <Button className="search_buttonsHidden" type='submit' onClick={search} variant="outlined">Google Search</Button>
-                        <Button className="search_buttonsHidden" variant="outlined">I'm Feeling Lucky</Button>
-                    </div>
-                )}
+    // do something with the input...come back later and fix
+    history.push("./search");
+  };
 
-        </form>
-    )
+  return (
+    <form className="search">
+      <div className="search_input">
+        <SearchIcon className="search_inputIcon" />
+        <input value={input} onChange={(e) => setInput(e.target.value)} />
+        <MicIcon />
+      </div>
+
+      {!hideButtons ? (
+        <div className="search_buttons">
+          <Button type="submit" onClick={search} variant="outlined">
+            Google Search
+          </Button>
+          <Button variant="outlined">I'm Feeling Lucky</Button>
+        </div>
+      ) : (
+          <div className="search_buttons">
+            <Button
+              className="search_buttonsHidden"
+              type="submit"
+              onClick={search}
+              variant="outlined"
+            >
+              Google Search
+          </Button>
+            <Button className="search_buttonsHidden" variant="outlined">
+              I'm Feeling Lucky
+          </Button>
+          </div>
+        )}
+    </form>
+  );
 }
 
-export default Search
+export default Search;
