@@ -94,7 +94,9 @@ function SearchPage() {
 
                                         />
                                     )}
-                                {item.displayLink} ▾
+                                <a className="searchPage_displayLink">
+                                    {item.displayLink} ▾
+                                </a>
                             </a>
                             <a className="searchPage_resultTitle"
                                 href={item.link}>
