@@ -1,3 +1,6 @@
+The google-clone site can be viewed at the following url:
+https://clone-1c8c6.web.app/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
