@@ -93,6 +93,11 @@
 }
 
 .searchPage_displayLink {
-  color: grey;
-  font-weight: 700;
+  color: #3c403e;
+  font-weight: 560;
+}
+
+a:link {
+  text-decoration: none !important;
+  cursor: pointer;
 }
